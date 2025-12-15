@@ -1,0 +1,1774 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efata Embodied Wellness | Riviera Maya</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE DESIGN SYSTEM --- */
+        :root {
+            --primary: #8D7F73; /* Earthy Taupe */
+            --secondary: #5F6F65; /* Deep Sage */
+            --accent: #C29B87; /* Clay */
+            --bg-light: #F9F7F2; /* Sand */
+            --text-dark: #2C2C2C;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 300;
+            padding-top: 0px; /* Reset padding */
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; color: var(--secondary); margin-top: 3rem; border-bottom: 1px solid var(--accent); display: inline-block; padding-bottom: 10px; }
+        h3 { font-size: 1.8rem; color: var(--primary); margin-top: 2rem; }
+        h4 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-top: 1.5rem; }
+        p, li { margin-bottom: 1rem; font-size: 1rem; }
+        ul { padding-left: 20px; margin-bottom: 2rem; }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.98);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            transition: 0.3s;
+            color: var(--text-dark);
+        }
+
+        .nav-button:hover, .nav-button.active {
+            color: var(--accent);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        /* HAMBURGER MENU (Mobile) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1002;
+        }
+
+        /* GOOGLE TRANSLATE STYLING */
+        #google_translate_element {
+            margin-left: 15px;
+        }
+        
+        /* Clean up Google Translate default styling */
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid #ccc !important;
+            border-radius: 4px;
+            padding: 4px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 12px !important;
+        }
+
+        /* LAYOUT */
+        .page-section {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+            padding-bottom: 5rem;
+        }
+        
+        .page-section.active {
+            display: block; /* Visible when active */
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HERO IMAGE SECTIONS */
+        .hero {
+            height: 60vh;
+            background-color: var(--secondary);
+            background-image: url('https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.3); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1, .hero p { color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+        /* ACCORDION SERVICES */
+        details {
+            background: white;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        details:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            list-style: none; /* Hide default triangle */
+            position: relative;
+            background-color: #fff;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #eee;
+            background-color: var(--bg-light);
+            color: var(--accent);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            background: white;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .duration-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* GRID SYSTEM */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+        .grid-card { background: white; padding: 2rem; border: 1px solid #eee; }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                border-bottom: 1px solid #ddd;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            #google_translate_element {
+                margin: 15px 0 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="goTo('home')">EFATA EMBODIED WELLNESS</div>
+        
+        <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+
+        <div class="nav-menu" id="navMenu">
+            <button class="nav-button" onclick="goTo('home')">Home</button>
+            <button class="nav-button" onclick="goTo('about')">About</button>
+            <button class="nav-button" onclick="goTo('philosophy')">Philosophy</button>
+            <button class="nav-button" onclick="goTo('somatic')">Somatic</button>
+            <button class="nav-button" onclick="goTo('psychotherapy')">Psychotherapy</button>
+            <button class="nav-button" onclick="goTo('temazcal')">Temazcal</button>
+            <button class="nav-button active" onclick="goTo('psilocybin')">Psilocybin</button>
+            <button class="nav-button" onclick="goTo('hotels')">Hotels</button>
+            <button class="nav-button" onclick="goTo('corporate')">Corporate</button>
+            
+            <div id="google_translate_element"></div>
+        </div>
+    </nav>
+
+    <div id="home" class="page-section">
+        <div class="hero" style="background-image: url(&quot;meditating-peace-sun-meditate-wellness.jpg&quot;);">
+            <div class="hero-content">
+                <h1>Efata Embodied Healing &amp; Conscious Wellness</h1>
+                <p>Playa del Carmen · Tulum · Riviera Maya</p><p>Integrative psychotherapy, somatic bodywork, ancestral ceremony and lifestyle medicine — held with depth, ethics and care.&nbsp;<span style="font-size: 1rem;">For individuals, groups, retreats, hotels and organizations seeking grounded, human-centered wellbeing.</span></p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem; margin-top: 4rem;">
+                <h2>Integrated Services</h2>
+                <h3>Kinsey &amp; Ariela</h3>
+                <p><strong>Body · Psyche · Lifestyle · Consciousness</strong></p>
+                <p>These offerings unite somatic bodywork, psychotherapy, nutrition, lifestyle medicine and ceremonial wisdom into cohesive, high-touch experiences.</p>
+                <p>We offer integrative healing experiences that unite body, mind, spirit, lifestyle and consciousness, supporting sustainable transformation for individuals, teams and communities.</p><p>Many people arrive here not because something is “wrong,” but because something important is asking to be listened to.</p><p>Stress, trauma, burnout, transition, grief, and even profound experiences often live quietly in the body long after the mind has moved on. Our work exists to create <strong>safe, embodied and ethical spaces</strong> where healing can unfold naturally — through the body, the psyche, and relationship.</p><p>We offer integrative healing experiences that bridge <strong>psychotherapy, somatic intelligence, lifestyle medicine and ancestral wisdom</strong>, supporting sustainable transformation rather than quick fixes.</p><hr><h2>WHO WE SERVE</h2><p>We work with:</p><ul>
+<li>
+<p>Individuals seeking trauma-informed psychotherapy and somatic healing</p>
+</li>
+<li>
+<p>Expats, digital nomads and conscious travelers</p>
+</li>
+<li>
+<p>People navigating burnout, life transitions, grief or emotional overwhelm</p>
+</li>
+<li>
+<p>Retreat participants seeking grounded integration</p>
+</li>
+<li>
+<p>Hotels and retreat centers offering meaningful wellness experiences</p>
+</li>
+<li>
+<p>Organizations and teams supporting long-term wellbeing</p>
+</li>
+</ul><p>Our work is offered in <strong>English and Spanish</strong>.</p><hr><h2>OUR APPROACH&nbsp;</h2><p>Healing is not something to be forced or rushed.<br>
+It unfolds when the body and nervous system feel safe enough to listen.</p><p>Our approach is guided by five core principles:</p><ul>
+<li>
+<p><strong>Safety before intensity</strong></p>
+</li>
+<li>
+<p><strong>The body as a source of wisdom</strong></p>
+</li>
+<li>
+<p><strong>Integration over peak experience</strong></p>
+</li>
+<li>
+<p><strong>Science and tradition in dialogue</strong></p>
+</li>
+<li>
+<p><strong>Relationship as medicine</strong></p>
+</li>
+</ul><p>This philosophy informs every session, ceremony and collaboration we offer.</p><h2>CORE PATHWAYS</h2><h3>🜂 Individual Sessions</h3><p><strong>Personalized Psychotherapy &amp; Holistic Wellness</strong></p><p>One-on-one work integrating psychotherapy, somatic bodywork, lifestyle medicine and ceremonial integration — designed around your nervous system and life context.</p><p><strong>Includes:</strong></p><ul>
+<li>
+<p>Integrative psychotherapy &amp; somatic trauma work</p>
+</li>
+<li>
+<p>Somatic bodywork &amp; nervous system regulation</p>
+</li>
+<li>
+<p>Lifestyle medicine &amp; nutrition support</p>
+</li>
+<li>
+<p>Private temazcal and integration</p>
+</li>
+<li>
+<p>Individual psilocybin-assisted therapeutic processes</p>
+</li>
+</ul><p></p><h3>🌿 Group Experiences</h3><p><strong>Ceremonies · Workshops · Retreats</strong></p><p>Intentionally held group spaces that balance depth, safety and collective resonance.</p><p><strong>Includes:</strong></p><ul>
+<li>
+<p>Temazcal ceremonies (4–5 hours)</p>
+</li>
+<li>
+<p>Cacao ceremonies (3–4 hours)</p>
+</li>
+<li>
+<p>Therapeutic integration circles</p>
+</li>
+<li>
+<p>Somatic &amp; breathwork groups</p>
+</li>
+<li>
+<p>Weekend and multi-day retreats</p></li></ul><h3>🔥 Tulum Temazcal</h3><p><strong>Traditional Ancestral Ceremony</strong></p><p>A living ceremonial space rooted in Mesoamerican lineage, offering temazcal as a process of purification, regulation and reconnection — held with trauma-informed awareness and integration.</p><h3>🍄 Psilocybin Ceremonies</h3><p><strong>Therapeutic &amp; Ceremonial Processes</strong></p><p>Carefully curated 2-day therapeutic containers for individuals and small groups, emphasizing screening, preparation, safety and long-term integration.</p><h3>🏨 Hotel &amp; Retreat Partnerships</h3><p><strong>Curated Wellness Experiences</strong></p><p>Collaborations with boutique hotels, eco-resorts and retreat centers seeking authentic, ethically held wellness offerings for guests.</p><p><strong>→ Hotel &amp; Retreat Plans</strong></p><h3>🧠 Corporate Wellness</h3><p><strong>Embodied Wellbeing for Teams</strong></p><p>Human-centered wellness programs for organizations focused on nervous system regulation, burnout prevention and sustainable performance.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><br></p>
+            </div>
+
+            <div class="grid-2">
+                <div class="grid-card">
+                    <h3>Kinsey Williams</h3>
+                    <h4>Embodied Lineage, Somatic Practitioner · Lifestyle Medicine &amp; Nutrition</h4>
+                    <p>Somatic Bodywork · Lifestyle Medicine · Nutrition · Nervous System Regulation</p>
+                    <p>Kinsey’s work integrates evidence-based lifestyle medicine, nutrition, somatic bodywork and behavior change, supporting sustainable transformation through the body and daily habits.</p><p>Somatic bodywork practitioner trained in lifestyle medicine through Harvard Medical School Executive Education, specializing in nervous system regulation, sustainable habit change and embodied wellbeing.</p>
+                </div>
+                <div class="grid-card">
+                    <h3>Ariela Milstein</h3>
+                    <h4>Integrative Psychotherapist · Trauma-Informed Practitioner</h4>
+                    <p>Trauma · Ceremonial Work · Consciousness</p>
+                    <p>Ariela’s work bridges clinical psychotherapy, somatic trauma work, creativity and ceremonial processes, offering safe and deeply integrative healing spaces.</p><p>Clinical psychologist with a Master’s degree in Community Development and extensive training in Gestalt psychotherapy, somatic trauma work, expressive therapies and integration of expanded states of consciousnes</p>
+                </div>
+            </div>
+
+            <div class="grid-card" style="margin-top: 2rem; text-align: center;">
+                <h3>Delivery Formats</h3>
+                <p>Private sessions · Small groups · Retreats &amp; immersions · Corporate programs</p><h2>WHY WORK WITH US</h2><ul>
+<li>
+<p>Trauma-informed and ethically grounded</p>
+</li>
+<li>
+<p>Multidisciplinary expertise (psychotherapy, somatics, lifestyle medicine)</p>
+</li>
+<li>
+<p>Respectful integration of ancestral practices</p>
+</li>
+<li>
+<p>Experience with international and multicultural clients</p>
+</li>
+<li>
+<p>English &amp; Spanish facilitation</p>
+</li>
+<li>
+<p>Depth without sensationalism</p>
+</li>
+</ul><hr><h2>LOCATION &amp; FORMAT</h2><p>📍 Playa del Carmen &amp; Tulum — Riviera Maya<br>
+🌎 Serving international clients<br>
+🗣 Sessions in English &amp; Spanish<br>
+🧭 In-person and online options available</p><hr><h2>CONTACT</h2><p>Healing is not about becoming someone else.<br>
+It is about returning to yourself — to your body, your rhythm and your capacity to choose.</p><p>
+
+
+
+
+
+
+
+
+</p><p>If this resonates, we invite you to begin a conversation.</p><p><strong>WhatsApp</strong><br>
+Ariela: <strong>+52 5519 1219 00</strong><br>
+Kinsey: <strong>+1 (432) 640 9708</strong><br>
+Tulum Temazcal (Emilio): <strong>+52 984 180 8944</strong></p><hr><p>
+
+</p><p><strong>Online</strong><br>
+Ariela (Instagram): <a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/psic.arielamilstein/">https://www.instagram.com/psic.arielamilstein/<span aria-hidden="true" class="ms-0.5 inline-block align-middle leading-none"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-rtl-flip="" class="block h-[0.75em] w-[0.75em] stroke-current stroke-[0.75]"><path d="M14.3349 13.3301V6.60645L5.47065 15.4707C5.21095 15.7304 4.78895 15.7304 4.52925 15.4707C4.26955 15.211 4.26955 14.789 4.52925 14.5293L13.3935 5.66504H6.66011C6.29284 5.66504 5.99507 5.36727 5.99507 5C5.99507 4.63273 6.29284 4.33496 6.66011 4.33496H14.9999L15.1337 4.34863C15.4369 4.41057 15.665 4.67857 15.665 5V13.3301C15.6649 13.6973 15.3672 13.9951 14.9999 13.9951C14.6327 13.9951 14.335 13.6973 14.3349 13.3301Z"></path></svg></span></a><br>
+Kinsey (Website): <a rel="noopener" target="_new" class="decorated-link" href="https://www.embodiedlineage.com">https://www.embodiedlineage.com<span aria-hidden="true" class="ms-0.5 inline-block align-middle leading-none"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-rtl-flip="" class="block h-[0.75em] w-[0.75em] stroke-current stroke-[0.75]"><path d="M14.3349 13.3301V6.60645L5.47065 15.4707C5.21095 15.7304 4.78895 15.7304 4.52925 15.4707C4.26955 15.211 4.26955 14.789 4.52925 14.5293L13.3935 5.66504H6.66011C6.29284 5.66504 5.99507 5.36727 5.99507 5C5.99507 4.63273 6.29284 4.33496 6.66011 4.33496H14.9999L15.1337 4.34863C15.4369 4.41057 15.665 4.67857 15.665 5V13.3301C15.6649 13.6973 15.3672 13.9951 14.9999 13.9951C14.6327 13.9951 14.335 13.6973 14.3349 13.3301Z"></path></svg></span></a><br>
+Kinsey (Instagram): <a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/kinseywilliams_wellness/">https://www.instagram.com/kinseywilliams_wellness/<span aria-hidden="true" class="ms-0.5 inline-block align-middle leading-none"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-rtl-flip="" class="block h-[0.75em] w-[0.75em] stroke-current stroke-[0.75]"><path d="M14.3349 13.3301V6.60645L5.47065 15.4707C5.21095 15.7304 4.78895 15.7304 4.52925 15.4707C4.26955 15.211 4.26955 14.789 4.52925 14.5293L13.3935 5.66504H6.66011C6.29284 5.66504 5.99507 5.36727 5.99507 5C5.99507 4.63273 6.29284 4.33496 6.66011 4.33496H14.9999L15.1337 4.34863C15.4369 4.41057 15.665 4.67857 15.665 5V13.3301C15.6649 13.6973 15.3672 13.9951 14.9999 13.9951C14.6327 13.9951 14.335 13.6973 14.3349 13.3301Z"></path></svg></span></a><br>
+Tulum Temazcal (Website): <a rel="noopener" target="_new" class="decorated-link" href="https://tulumtemazcal.com?utm_source=chatgpt.com">https://tulumtemazcal.com<span aria-hidden="true" class="ms-0.5 inline-block align-middle leading-none"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-rtl-flip="" class="block h-[0.75em] w-[0.75em] stroke-current stroke-[0.75]"><path d="M14.3349 13.3301V6.60645L5.47065 15.4707C5.21095 15.7304 4.78895 15.7304 4.52925 15.4707C4.26955 15.211 4.26955 14.789 4.52925 14.5293L13.3935 5.66504H6.66011C6.29284 5.66504 5.99507 5.36727 5.99507 5C5.99507 4.63273 6.29284 4.33496 6.66011 4.33496H14.9999L15.1337 4.34863C15.4369 4.41057 15.665 4.67857 15.665 5V13.3301C15.6649 13.6973 15.3672 13.9951 14.9999 13.9951C14.6327 13.9951 14.335 13.6973 14.3349 13.3301Z"></path></svg></span></a><br>
+Tulum Temazcal (Instagram): <a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/tulumtemazcal/">https://www.instagram.com/tulumtemazcal/<span aria-hidden="true" class="ms-0.5 inline-block align-middle leading-none"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-rtl-flip="" class="block h-[0.75em] w-[0.75em] stroke-current stroke-[0.75]"><path d="M14.3349 13.3301V6.60645L5.47065 15.4707C5.21095 15.7304 4.78895 15.7304 4.52925 15.4707C4.26955 15.211 4.26955 14.789 4.52925 14.5293L13.3935 5.66504H6.66011C6.29284 5.66504 5.99507 5.36727 5.99507 5C5.99507 4.63273 6.29284 4.33496 6.66011 4.33496H14.9999L15.1337 4.34863C15.4369 4.41057 15.665 4.67857 15.665 5V13.3301C15.6649 13.6973 15.3672 13.9951 14.9999 13.9951C14.6327 13.9951 14.335 13.6973 14.3349 13.3301Z"></path></svg></span></a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&amp;w=2664&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>About Us</h1></div>
+        </div>
+        
+        <div class="container">
+            <h2>Ariela Milstein</h2>
+            <p><strong>Integrative Psychotherapist · Trauma-Informed Practitioner · Holistic Wellness Guide</strong></p>
+            <p>I believe that much of the suffering we experience today does not come from something “wrong” inside us, but from disconnection—from the body, from meaning, from community, and from the natural rhythms that once held us. My work exists to gently restore those connections.</p>
+            <p>I am a clinical psychologist and integrative psychotherapist, and I accompany people through moments when life asks them to slow down, feel more deeply, and listen differently. I work at the intersection of psychotherapy, somatic awareness, holistic wellness and ceremonial integration, offering spaces where healing can unfold with safety, respect and depth.</p>
+            
+            <details>
+                <summary>Read Full Bio: Ariela</summary><div class="service-content"><h4>Why My Work Matters</h4>
+                    <p>Many of the people who come to me are highly functional, sensitive and thoughtful. They have built full lives, traveled far, and achieved much—yet something feels fragmented or exhausted inside. Trauma, chronic stress, grief, relocation, or profound experiences often live quietly in the body long after the mind has moved on.</p>
+                    <p>I believe healing happens when we stop asking “What’s wrong with me?” and begin asking “What happened to me—and what does my body need now?” This shift changes everything.</p>
+
+                    <h4>My Path</h4>
+                    <p>My professional journey has always been guided by a curiosity about how humans heal in real life, not only in theory. Before establishing my private practice, I worked extensively with communities, children and families in vulnerable contexts, including humanitarian missions and Indigenous communities. I hold a Bachelor’s degree in Psychology and a Master’s degree in Community Development from the Hebrew University of Jerusalem.</p>
+
+                    <h4>My Therapeutic Focus</h4>
+                    <p>At the core of my work is integrative psychotherapy, rooted in Gestalt therapy, somatic trauma work and nervous system regulation. I approach the psyche as something alive and relational, inseparable from the body and its wisdom.</p><h4 style="color: rgb(194, 155, 135);">INTEGRATIVE PSYCOTHERAPIST, TRAUMA INFORMED PRACTITIONER, HOLISTIC WELLNESS GUIDE</h4><p>Ariela Milstein is a clinical psychologist and integrative psychotherapist whose work bridges <strong>depth psychotherapy, somatic awareness, community-rooted wisdom, and holistic wellbeing</strong>. Her approach is grounded, relational, and trauma-informed, supporting people in reconnecting with their emotional world, their bodies, and their capacity for meaningful, embodied change.</p><p>She holds a <strong>Bachelor’s degree in Psychology</strong> and a <strong>Master’s degree in Community Development</strong> from the Hebrew University of Jerusalem, where she graduated with high academic distinction. Her academic and professional path has consistently focused on understanding healing not only at the individual level, but within broader relational, cultural, and ecological contexts.</p><p>Ariela has extensive postgraduate training in <strong>Gestalt psychotherapy, somatic and trauma-informed approaches, nervous system regulation, dreamwork, expressive and art-based therapies, and the preparation and integration of expanded states of consciousness</strong>. Her clinical work emphasizes emotional regulation, embodiment, meaning-making, and the ethical integration of profound experiences into daily life.</p><p>Alongside her clinical practice, Ariela has worked for many years in <strong>community development and international contexts</strong>, supporting psychosocial wellbeing in diverse environments. Her experience includes working with <strong>Waorani women in the Ecuadorian Amazon</strong>, where she facilitated community-based projects rooted in cultural respect and women’s empowerment; participating in <strong>humanitarian missions with CADENA</strong>, providing psychosocial support in disaster contexts; and offering <strong>emotional and educational support for children and families in conditions of mobility and migration</strong>. She has also worked in environmental education and community initiatives in Israel and Kenya.</p><p>These experiences deeply shaped her understanding of healing as something that unfolds in relationship—with oneself, with others, and with the land—rather than as an isolated clinical process.</p><p>In recent years, Ariela’s professional focus has centered primarily on <strong>integrative psychotherapy and holistic wellness</strong>, weaving together her clinical background with somatic practices and ceremonial integration. She works with individuals navigating trauma, burnout, grief, life transitions, identity shifts, and the integration of retreats or expanded states of consciousness. Her work is especially supportive for <strong>expats, conscious travelers, and people living between cultures</strong>, who often carry complex emotional and nervous system patterns beneath highly functional lives.</p><p>Ariela is also a dedicated student of <strong>ancestral and ceremonial traditions</strong>, including <strong>temazcal</strong>, and is a <strong>Sun Dance and Moon Dance practitioner and Eagle of Fire apprentice</strong>. She approaches these traditions with humility and responsibility, integrating them ethically into her therapeutic work through careful preparation and integration rather than spiritual bypassing.</p><p>At the heart of Ariela’s work is a simple but profound commitment:<br>
+to create spaces where people feel <strong>safe enough to listen inwardly</strong>, reconnect with their bodies, and move toward lives that feel more coherent, embodied, and true.</p><p>
+
+
+
+
+
+
+
+
+</p><p>She offers sessions in <strong>English and Spanish</strong>, in person and online, and collaborates closely with somatic practitioners and ceremonial spaces to support whole-system healing.</p>
+                </div>
+            </details>
+
+            <h2 style="margin-top: 4rem;">Kinsey Williams</h2>
+            <p><strong>Somatic Practitioner · Lifestyle Medicine &amp; Nutrition Coach · Embodiment Guide</strong></p>
+            <p>Much of modern suffering lives in the body long before it becomes a diagnosis. Chronic tension, fatigue, anxiety, disconnection, and burnout are often signs of a nervous system that has been asked to adapt for too long without support. My work exists to help people come back into relationship with their bodies, restoring regulation, trust, and vitality from the inside out.</p>
+            <p>I am a somatic practitioner and lifestyle medicine coach specializing in trauma-informed bodywork, nervous system regulation, nutrition, and sustainable behavior change.</p>
+
+            <details>
+                <summary>Read Full Bio: Kinsey</summary><div class="service-content"><h4>Why My Work Matters</h4>
+                    <p>Many of the people I work with are capable, disciplined, and resilient. They have learned to push through discomfort, override fatigue, and perform under pressure. Over time, this survival strategy becomes costly. The body holds the impact—even when the mind keeps going.</p>
+                    <p>I believe that healing does not begin with control or discipline, but with listening. The body constantly communicates what it needs through sensation, pain, cravings, breath, and energy. When we learn to listen, regulation becomes possible—and from regulation, real change can emerge.</p>
+
+                    <h4>My Path</h4>
+                    <p>My professional path has been shaped by a lifelong curiosity about how humans adapt, heal, and thrive under stress. I am trained in somatic bodywork and trauma-informed care, with a strong foundation in lifestyle medicine, nutrition, and behavior change. I have completed advanced training in Lifestyle Medicine through Harvard Medical School Executive Education.</p><p><strong>Somatic Practitioner · Lifestyle Medicine &amp; Nutrition · Embodiment Guide</strong></p><p>Kinsey Williams is a somatic practitioner and lifestyle medicine coach whose work centers on <strong>nervous system regulation, embodied healing, and sustainable health</strong>. His approach integrates trauma-informed bodywork, breathwork, and evidence-based lifestyle medicine to support lasting change through the body rather than through willpower alone.</p><p>Kinsey’s professional path emerged from a deep interest in how <strong>stress, trauma, and modern lifestyles shape the body and nervous system</strong>. He works from the understanding that many physical and emotional patterns—chronic tension, burnout, fatigue, dysregulation—are not personal failures, but adaptive responses to prolonged stress.</p><p>He is trained in <strong>Lifestyle Medicine through Harvard Medical School Executive Education</strong>, where he studied nutrition, movement, sleep, stress resilience, social connection, and sustainable behavior change. His work emphasizes practical, flexible strategies that support health without rigidity, restriction, or performance pressure.</p><p>Kinsey’s somatic work is grounded in <strong>trauma-informed myofascial bodywork and nervous system regulation</strong>, offering clients a safe, attuned space to release chronic tension, reconnect with bodily signals, and restore internal stability. His sessions prioritize pacing, consent, and presence, recognizing the body as a primary source of information and healing.</p><p>In addition to his clinical and lifestyle training, Kinsey is also an <strong>apprentice of ancestral ceremonial traditions</strong>, including <strong>temazcal</strong>, and a <strong>Moon Dancer</strong>, with direct experience in <strong>vision quest processes</strong>. These ceremonial paths have deepened his embodied understanding of endurance, intention, ritual pacing, and the relational field created in ceremonial space.</p><p>Rather than being used as techniques, these traditions inform Kinsey’s work through <strong>presence, humility, and respect for natural cycles</strong>, strengthening his capacity to hold space, read non-verbal signals, and work with altered physiological and emotional states safely and ethically. This background adds an important layer to his somatic practice, particularly when supporting individuals integrating intense experiences or reconnecting with their bodies after prolonged disconnection.</p><p>Kinsey also integrates <strong>therapeutic breathwork and embodiment practices</strong>, supporting emotional regulation, clarity, and reconnection with the present moment. His work is especially supportive for individuals navigating burnout, anxiety, life transitions, or the cumulative effects of long-term stress.</p><p>A central pillar of Kinsey’s approach is <strong>behavior change rooted in Self-Determination Theory</strong>, emphasizing autonomy, competence, and relatedness. Rather than imposing external protocols, he supports clients in cultivating habits and lifestyles that feel internally motivated and sustainable over time.</p><p>Kinsey works with <strong>expats, remote professionals, high-functioning individuals, and conscious travelers</strong>, many of whom live fast-paced lives while carrying unacknowledged nervous system strain. His work offers a grounded counterbalance—supporting people in slowing down, listening to their bodies, and rebuilding resilience from the inside out.</p><p>He collaborates closely with psychotherapists and ceremonial practitioners, including Ariela Milstein and Tulum Temazcal, providing <strong>integrated preparation and integration support</strong> around retreats, ceremonies, and transformative processes.</p><p>At the heart of Kinsey’s work is a commitment to <strong>embodied sustainability</strong>—helping people not only feel better in the moment, but build lives that support long-term regulation, vitality, and wellbeing.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+</p><p>Kinsey offers sessions in <strong>English</strong>, in person and online, and works across <strong>individual, group, hospitality, and organizational contexts</strong>, always prioritizing ethical care, consent, and integration.</p><p><br></p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div id="philosophy" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&amp;w=2073&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>Philosophy &amp; Vision</h1></div>
+        </div>
+
+        <div class="container">
+            <p class="lead" style="font-size: 1.2rem; text-align: center;">We believe that healing is not something to be forced, fixed, or rushed. It is a process of remembering—remembering the body, the psyche, the land, and the relational fabric that sustains life.</p>
+            
+            <div class="grid-card" style="margin-top: 2rem;"><h2>Our Philosophy</h2>
+<p>We believe that healing is not something to be forced, fixed, or optimized.<br>
+It is a <strong>relational and embodied process</strong> that unfolds when the body, nervous system, and emotional world feel safe enough to listen.</p>
+<p>In a culture that moves quickly and values productivity over presence, many people become disconnected from their bodies, rhythms, and inner signals. Stress, trauma, grief, and prolonged pressure often live quietly in the nervous system long after the mind has adapted. Our work exists to meet this reality with <strong>care, patience, and integrity</strong>.</p>
+<p>We approach healing through the integration of <strong>psychotherapy, somatic awareness, lifestyle medicine, and ancestral wisdom</strong>, understanding that no single modality is sufficient on its own. True wellbeing arises when the psychological, physical, relational, and spiritual dimensions of life are addressed together.</p>
+<p>Our philosophy is guided by the following core principles:</p>
+<h3>Safety Before Intensity</h3>
+<p>Healing cannot be rushed. We prioritize nervous system safety, consent, and pacing over catharsis or peak experiences. Depth emerges naturally when safety is established.</p>
+<h3>The Body as a Source of Wisdom</h3>
+<p>The body carries memory, intelligence, and truth beyond words. We listen to bodily signals as meaningful information rather than symptoms to override.</p>
+<h3>Integration Over Peak Experience</h3>
+<p>Insight without integration can be destabilizing. We emphasize preparation, grounding, and long-term integration so that experiences lead to sustainable change in daily life.</p>
+<h3>Science and Tradition in Dialogue</h3>
+<p>We honor both modern clinical knowledge and ancestral practices, allowing each to inform the other with respect and humility. Neither replaces the other; together they create balance.</p>
+<h3>Relationship as Medicine</h3>
+<p>Healing happens in relationship — with oneself, with others, and with the environment. We cultivate attuned, ethical, and respectful relationships in all our work.</p>
+<hr>
+<h2>Our Vision</h2>
+<p>Our vision is to contribute to a more <strong>embodied, regulated, and compassionate way of living</strong> — for individuals, communities, and organizations.</p>
+<p>We envision a model of wellness that:</p>
+<ul>
+<li>
+<p>Values presence over performance</p>
+</li>
+<li>
+<p>Supports nervous system health as foundational</p>
+</li>
+<li>
+<p>Honors cultural and ancestral wisdom without appropriation</p>
+</li>
+<li>
+<p>Integrates psychological depth with practical daily life</p>
+</li>
+<li>
+<p>Respects the pace and dignity of each person’s process</p>
+</li>
+</ul>
+<p>We see healing not as a destination, but as an ongoing relationship with oneself and the world — one that evolves through awareness, responsibility, and care.</p>
+<hr>
+<h2>How This Vision Comes to Life</h2>
+<p>Our philosophy and vision are expressed through multiple pathways, all held within the same ethical and embodied framework:</p>
+<ul>
+<li>
+<p><strong>Individual psychotherapy and somatic work</strong>, supporting trauma healing, emotional regulation, and personal transformation</p>
+</li>
+<li>
+<p><strong>Group experiences and ceremonies</strong>, creating collective spaces for connection, reflection, and integration</p>
+</li>
+<li>
+<p><strong>Ancestral practices such as temazcal</strong>, offered with respect, preparation, and care</p>
+</li>
+<li>
+<p><strong>Therapeutic psilocybin processes</strong>, held as complete containers emphasizing safety and integration</p>
+</li>
+<li>
+<p><strong>Hotel, retreat, and corporate wellness collaborations</strong>, bringing human-centered wellbeing into broader systems</p>
+</li>
+</ul>
+<p>Across all contexts, our intention remains the same:<br>
+to support people in returning to themselves — to their bodies, their rhythms, and their capacity to choose how they live.</p>
+<hr>
+<h2>Intention</h2>
+<p>We believe that when individuals feel regulated and supported, they naturally contribute to healthier relationships, communities, and environments.</p>
+<p>Our work is an invitation — not to become someone else — but to <strong>remember who you are beneath the noise</strong>.</p><ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="somatic" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&amp;w=2574&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>Somatic Bodywork &amp; Embodiment</h1><p>With Kinsey Williams</p></div>
+        </div>
+
+        <div class="container">
+            <p>Individual sessions are offered as trauma-informed, embodied, and deeply personalized processes. This work is not protocol-based or rushed. Each session is shaped around your nervous system, life context, and capacity for integration.</p><p>Trauma-informed bodywork, breathwork, and lifestyle-based support for nervous system regulation, resilience, and embodied wellbeing.</p><h2>A Body-Centered Approach to Healing</h2><p>Many forms of stress, trauma, and exhaustion do not live primarily in our thoughts — they live in the <strong>nervous system and the tissues of the body</strong>. Chronic tension, shallow breathing, fatigue, emotional overwhelm, and burnout are often signs of a body that has adapted to prolonged stress.</p><p>Kinsey’s work focuses on <strong>listening to the body rather than forcing it to change</strong>, creating conditions where regulation, clarity, and vitality can naturally emerge.</p><p>This work is especially supportive for people who:</p><ul>
+<li>
+<p>Feel disconnected from their bodies</p>
+</li>
+<li>
+<p>Carry chronic stress or tension</p>
+</li>
+<li>
+<p>Experience burnout or nervous system overload</p>
+</li>
+<li>
+<p>Have difficulty relaxing or resting</p>
+</li>
+<li>
+<p>Are integrating emotionally or physically intense experiences</p>
+</li>
+</ul><h2>Kinsey’s Approach</h2><p>Kinsey integrates:</p><ul>
+<li>
+<p><strong>Trauma-informed somatic bodywork</strong></p>
+</li>
+<li>
+<p><strong>Nervous system regulation</strong></p>
+</li>
+<li>
+<p><strong>Therapeutic breathwork</strong></p>
+</li>
+<li>
+<p><strong>Lifestyle medicine &amp; nutrition</strong></p>
+</li>
+<li>
+<p><strong>Embodied awareness and presence</strong></p>
+</li>
+</ul><p>His work is grounded in <strong>consent, pacing, and attunement</strong>, recognizing that safety is the foundation of meaningful change.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p>In addition to clinical and lifestyle training, Kinsey is an <strong>apprentice of ancestral temazcal tradition</strong>, a <strong>Moon Dancer</strong>, and has completed <strong>vision quest experiences</strong>. These ceremonial paths inform his capacity to hold space, work with intensity responsibly, and understand altered physiological and emotional states — always with humility and ethical care.</p><h2>Integration &amp; Collaborative Work</h2><p>Kinsey works closely with psychotherapists and ceremonial facilitators, including <strong>Ariela Milstein and Tulum Temazcal</strong>, offering somatic support for:</p><ul>
+<li>
+<p>Preparation before ceremonies or retreats</p>
+</li>
+<li>
+<p>Integration after intense emotional or ceremonial experiences</p>
+</li>
+<li>
+<p>Ongoing nervous system regulation</p>
+</li>
+</ul><p>This collaborative approach ensures that body-based insights are safely integrated into everyday life.</p><h2>Who This Work Is For</h2><p>Kinsey’s somatic work is especially supportive for:</p><ul>
+<li>
+<p>Expats and international clients</p>
+</li>
+<li>
+<p>High-functioning professionals experiencing burnout</p>
+</li>
+<li>
+<p>People navigating life transitions</p>
+</li>
+<li>
+<p>Individuals integrating retreats or ceremonies</p>
+</li>
+<li>
+<p>Anyone seeking grounded, embodied wellbeing</p>
+</li>
+</ul><p>No prior experience with somatic work is required.</p><hr><h2>An Invitation</h2><p>Somatic bodywork is not about fixing the body.<br>
+It is about <strong>restoring trust</strong> — in sensation, rhythm, and inner guidance.</p><p>If you feel called to work through the body, we invite you to begin with a conversation.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Book a Somatic Session / Contact Us</strong></p><p><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">WA:&nbsp;</span><strong style="text-align: center; background-color: rgb(255, 255, 255);">+1 (432) 640 9708</strong></strong></p><p><strong style="font-size: 1rem;"><span style="text-align: center; background-color: rgb(255, 255, 255);">Website:&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.embodiedlineage.com" style="text-align: center; background-color: rgb(255, 255, 255);">https://www.embodiedlineage.com</a></strong></p><p><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">Instagram:&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/kinseywilliams_wellness/" style="text-align: center; background-color: rgb(255, 255, 255);">https://www.instagram.com/kinseywilliams_wellness/</a></strong></p><p><strong><br></strong></p>
+
+            <h2>Individual Options&nbsp;</h2><details class="service-item">
+                <summary>Somatic Bodywork</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 75–90 minutes</span>
+                    <p>Trauma-informed myofascial bodywork focused on releasing chronic tension, restoring nervous system regulation, and rebuilding body awareness. Especially supportive for stress, burnout, and emotional overload held in the body.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Trauma-Informed Bodywork</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 75–90 minutes</span>
+                    <p>Gentle, attuned bodywork designed for individuals with trauma history, anxiety, or heightened nervous system sensitivity. Emphasis on safety, pacing, and regulation rather than intensity.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Therapeutic Breathwork</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–75 minutes</span>
+                    <p>Guided breath practices supporting nervous system regulation, emotional clarity, grounding, and presence. Adapted to individual capacity and intention.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Lifestyle Medicine &amp; Nutrition Coaching</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60 minutes</span>
+                    <p>Evidence-based guidance integrating nutrition, sleep, movement, stress regulation, and sustainable habit design. Focused on long-term wellbeing rather than restrictive protocols.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Integrated Bodywork + Lifestyle Session</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 120 minutes</span>
+                    <p>A combined session integrating somatic bodywork with lifestyle and nutrition support, helping translate bodily insight into practical daily change.</p>
+                </div>
+            </details>
+
+            <h2>Group Options</h2>
+
+            <details class="service-item">
+                <summary>Somatic Movement &amp; Regulation</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 75–90 minutes</span>
+                    <p>Group movement practices designed to release chronic tension, restore regulation, and reconnect participants with bodily awareness in a safe and accessible way.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Breathwork for Regulation &amp; Clarity</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–75 minutes</span>
+                    <p>Guided breathwork supporting emotional balance, clarity, and nervous system regulation. Adapted to the group’s capacity and intention.</p>
+                </div>
+            </details>
+
+            <h2>Integrated Individual Work (Kinsey + Ariela)</h2>
+
+            <details class="service-item">
+                <summary>Embodied Healing Session</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 120–150 minutes</span>
+                    <p>A coordinated session combining somatic bodywork, psychotherapy, and nervous system regulation. Designed for deeper processes that benefit from simultaneous body–psyche support.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Trauma Healing Journey</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 120–150 minutes</span>
+                    <p>Extended individual session for complex trauma, burnout, or prolonged stress, integrating bodywork, emotional processing, and lifestyle support.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div id="psychotherapy" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1520962922320-2038eebab146?q=80&amp;w=2574&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>Psychotherapy &amp; Somatic Trauma Work</h1><div>&nbsp; With&nbsp; Ariela&nbsp; Milstein</div><div><br></div><div><br></div></div></div><div class="container">
+<p><br></p><p>Integrative psychotherapy that honors the body, the nervous system, and the emotional world — supporting healing, meaning, and embodied presence.</p>
+<hr>
+<h2>A Relational &amp; Embodied Approach to Psychotherapy</h2>
+<p>Many emotional struggles are not the result of something being “wrong,” but of experiences that have exceeded our capacity to process them at the time they occurred. Trauma, prolonged stress, grief, and life transitions often live not only in memory, but in the <strong>body and nervous system</strong>.</p>
+<p>Ariela’s work offers a <strong>safe, relational, and trauma-informed therapeutic space</strong> where these experiences can be gently explored, integrated, and transformed. Therapy is approached not as a corrective process, but as a <strong>collaborative inquiry</strong> into what the psyche and body are asking for now.</p>
+<p>This work is especially supportive for individuals who:</p>
+<ul>
+<li>
+<p>Carry unresolved trauma or chronic stress</p>
+</li>
+<li>
+<p>Experience anxiety, emotional overwhelm, or burnout</p>
+</li>
+<li>
+<p>Are navigating grief, identity shifts, or major life transitions</p>
+</li>
+<li>
+<p>Feel disconnected from their bodies or emotions</p>
+</li>
+<li>
+<p>Are integrating retreats, ceremonies, or expanded states of consciousness</p>
+</li>
+</ul>
+<hr>
+<h2>Ariela’s Therapeutic Orientation</h2>
+<p>Ariela’s psychotherapy is grounded in:</p>
+<ul>
+<li>
+<p><strong>Gestalt psychotherapy</strong>, emphasizing presence, awareness, and relationship</p>
+</li>
+<li>
+<p><strong>Somatic and trauma-informed approaches</strong>, working with bodily signals and nervous system regulation</p>
+</li>
+<li>
+<p><strong>Depth and symbolic work</strong>, including dreams and imagery</p>
+</li>
+<li>
+<p><strong>Expressive and art-based modalities</strong>, supporting non-verbal integration</p>
+</li>
+<li>
+<p><strong>Preparation and integration of expanded states</strong>, held ethically and responsibly</p>
+</li>
+</ul>
+<p>Her work is relational, embodied, and paced — always guided by consent, curiosity, and care.</p>
+<p>Alongside her clinical training, Ariela’s background in <strong>community development and international psychosocial work</strong> informs her sensitivity to cultural context, collective trauma, and relational systems. This perspective allows her to hold therapy as both a deeply personal and inherently relational process.</p><h2>Integration &amp; Collaborative Care</h2><p>Ariela works closely with somatic practitioners and ceremonial facilitators, including <strong>Kinsey Williams and Tulum Temazcal</strong>, providing psychotherapy support for:</p><ul>
+<li>
+<p>Preparation before ceremonial or intensive experiences</p>
+</li>
+<li>
+<p>Post-ceremony or retreat integration</p>
+</li>
+<li>
+<p>Ongoing emotional and nervous system regulation</p>
+</li>
+</ul><p>This collaborative approach ensures that psychological depth and embodied awareness remain connected.</p><hr><h2>Who This Work Is For</h2><p>Ariela’s psychotherapy is especially supportive for:</p><ul>
+<li>
+<p>Expats and people living between cultures</p>
+</li>
+<li>
+<p>Individuals healing trauma or long-term stress</p>
+</li>
+<li>
+<p>Those navigating burnout, grief, or transition</p>
+</li>
+<li>
+<p>Helpers, caregivers, and creatives</p>
+</li>
+<li>
+<p>People seeking depth without spiritual bypassing</p>
+</li>
+</ul><p>Sessions are offered in <strong>English and Spanish</strong>, in person and online.</p><hr><h2>An Invitation</h2><p>Psychotherapy is not about fixing who you are.<br>
+It is about creating enough safety to <strong>listen honestly</strong>, feel fully, and choose with clarity.</p><p>If you feel called to explore this work, you are welcome to begin with a conversation.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Book a Therapy Session / Contact Us</strong></p><p><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">WA&nbsp;</span><strong style="text-align: center; background-color: rgb(255, 255, 255);">+52 5519 1219 00</strong></strong></p><p><strong><strong style="text-align: center; background-color: rgb(255, 255, 255);"><span style="font-weight: 300;">Instagram:&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/psic.arielamilstein/" style="font-weight: 300;">https://www.instagram.com/psic.arielamilstein/</a></strong></strong></p><p><strong><br></strong></p></div><div class="container">
+            <h2>Individual Options&nbsp;</h2><details class="service-item">
+                <summary>Integrative Psychotherapy (Gestalt-based)</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–75 minutes</span>
+                    <p>Relational psychotherapy focused on emotional awareness, present-moment experience, and meaning-making. Supports clarity, grounding, and agency.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Trauma-Informed &amp; Somatic Therapy</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 75 minutes</span>
+                    <p>Psychotherapy with a strong somatic focus, supporting nervous system regulation, trauma processing, and emotional containment.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Dreamwork &amp; Symbolic Integration</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60 minutes</span>
+                    <p>Exploration of dreams, imagery, and symbolic material as pathways to unconscious insight and emotional integration.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Art Therapy &amp; Creative Expression</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 75 minutes</span>
+                    <p>Creative processes used to access and integrate experiences that may not yet have words, supporting emotional flow and self-expression.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Preparation &amp; Integration Sessions</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–75 minutes</span>
+                    <p>Therapeutic support before or after retreats, ceremonies, or life-changing experiences, helping ground insight into daily life with stability and clarity.</p>
+                </div>
+            </details>
+
+            <h2>Group Options</h2>
+
+            <details class="service-item">
+                <summary>Therapeutic Integration Circle</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 90–120 minutes</span>
+                    <p>A facilitated group space for emotional processing and meaning-making, especially supportive after retreats, ceremonies, or significant life experiences.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Women’s Circles / Mixed Circles</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 2 hours</span>
+                    <p>Intimate circles focused on emotional awareness, relational healing, and embodied reflection, held with clear psychological boundaries and safety.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div id="temazcal" class="page-section">
+        <div class="hero" style="height: 50vh; background-image: url(&quot;WhatsApp Image 2025-12-10 at 10.19.04 AM.jpeg&quot;);">
+            <div class="hero-content"><h1>Tulum Temazcal</h1><p>Ancestral Ceremony of Purification &amp; Renewal</p><p>A sacred space for reconnection, regulation, and remembrance — held with respect for tradition, the body, and the nervous system.</p></div>
+        </div>
+
+        <div class="container">
+            <p>Tulum Temazcal exists as a space of return—a return to the body, to the Earth, and to the wisdom that lives beneath modern noise. Rooted in ancestral Mesoamerican traditions, the temazcal is not simply a sweat lodge or wellness ritual. It is a ceremonial process of purification, remembrance, and rebirth.</p><p>We offer traditional temazcal ceremonies rooted in <strong>Mesoamerican ancestral lineage</strong>, held in the natural environment of the Riviera Maya. Our ceremonies honor the temazcal as a <strong>living medicine</strong> — a space of purification, prayer, and embodied renewal.</p><p>This is not a performance or a spa experience.<br>
+It is a ceremonial process designed to support <strong>physical cleansing, emotional release, nervous system regulation, and reconnection with the Earth</strong>.</p><hr><h2>What Is a Temazcal?</h2><p>The temazcal is an ancestral ritual practiced for thousands of years by Indigenous peoples of Mesoamerica. Often referred to as the “womb of the Earth,” it is a <strong>sweat lodge ceremony</strong> that uses heat, steam, medicinal herbs, prayer, song, silence, and intention to support healing and renewal.</p><p>Symbolically, entering the temazcal represents a return to the womb — a space where we shed what no longer serves us and emerge renewed, grounded, and more connected to ourselves and the natural world.</p><p>The ceremony works with the four elements:</p><ul>
+<li>
+<p><strong>Fire</strong> (the stones)</p>
+</li>
+<li>
+<p><strong>Water</strong> (steam and purification)</p>
+</li>
+<li>
+<p><strong>Earth</strong> (the lodge itself)</p>
+</li>
+<li>
+<p><strong>Air</strong> (breath, prayer, and song)</p>
+</li>
+</ul><hr><h2>Our Approach</h2><p>At Tulum Temazcal, ceremonies are held with:</p><ul>
+<li>
+<p>Deep respect for ancestral tradition</p>
+</li>
+<li>
+<p>Trauma-informed awareness and pacing</p>
+</li>
+<li>
+<p>Attention to individual limits and consent</p>
+</li>
+<li>
+<p>Careful preparation and grounding</p>
+</li>
+<li>
+<p>Emphasis on integration rather than intensity</p>
+</li>
+</ul><p>
+
+
+
+
+
+
+
+
+
+
+
+</p><p>We recognize that people arrive with different bodies, histories, and nervous systems. Each ceremony is guided with presence, humility, and attunement.</p><h2>Benefits of the Temazcal</h2><p>The temazcal supports healing on multiple levels:</p><ul>
+<li>
+<p>Physical purification through sweat and heat</p>
+</li>
+<li>
+<p>Improved circulation and muscle relaxation</p>
+</li>
+<li>
+<p>Emotional release and nervous system regulation</p>
+</li>
+<li>
+<p>Mental clarity and grounding</p>
+</li>
+<li>
+<p>Reconnection with nature and ancestral wisdom</p>
+</li>
+<li>
+<p>A sense of renewal, presence, and inner coherence</p>
+</li>
+</ul><p>Many participants describe the experience as a <strong>reset for body, heart, and spirit</strong>.</p><hr><h2>Preparation &amp; Care</h2><p>To support a safe and meaningful experience:</p><ul>
+<li>
+<p>Wear a swimsuit or light natural clothing</p>
+</li>
+<li>
+<p>Stay hydrated and eat lightly before the ceremony</p>
+</li>
+<li>
+<p>Avoid alcohol or heavy meals beforehand</p>
+</li>
+<li>
+<p>Listen to your body — breaks and pacing are always honored</p>
+</li>
+<li>
+<p>After the ceremony, allow time for rest, hydration, and integration</p>
+</li>
+</ul><p>Specific guidance will be shared upon booking.</p><hr><h2>Who Can Participate?</h2><p>Temazcal is open to individuals who feel called to the experience and are in general physical and emotional health.</p><p>If you have medical conditions, are pregnant, or have concerns, please consult with us before booking so we can ensure safety and proper care.</p><hr><h2>Location</h2><p>Ceremonies are held in the <strong>Tulum / Riviera Maya area</strong>, in a natural setting surrounded by jungle and land.</p><p>Exact location details are shared upon confirmation.</p><hr><h2>Language</h2><p>Ceremonies are offered in:</p><ul>
+<li>
+<p><strong>Spanish</strong></p>
+</li>
+<li>
+<p><strong>English</strong></p>
+</li>
+</ul><hr><h2>About Tulum Temazcal</h2><p>Tulum Temazcal is a living project dedicated to honoring ancestral traditions while holding ceremonies with responsibility, humility, and care.</p><p>We work in collaboration with experienced facilitators, somatic practitioners, and psychotherapists to ensure that ceremonies are <strong>ethically held and properly integrated</strong>, bridging ancestral wisdom with contemporary understanding of the body and psyche.</p><hr><h2>An Invitation</h2><p>The temazcal is not about becoming someone else.<br>
+It is about returning to yourself — to your body, your breath, and your connection with the Earth.</p><p>If you feel the call, we are here to hold the space with respect and presence.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Book a Temazcal Ceremony / Contact Us</strong></p><p><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">Tulum Temazcal (Emilio):&nbsp;</span><strong style="text-align: center; background-color: rgb(255, 255, 255);">+52 984 180 8944</strong></strong></p><p><strong style="font-size: 1rem;"><strong style="text-align: center; background-color: rgb(255, 255, 255);"><span style="font-weight: 300;">Tulum Temazcal (Website):&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://tulumtemazcal.com?utm_source=chatgpt.com" style="font-weight: 300;">https://tulumtemazcal.com</a></strong></strong></p><p><strong><strong style="text-align: center; background-color: rgb(255, 255, 255);"><span style="font-weight: 300;">Tulum Temazcal (Instagram):&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/tulumtemazcal/" style="font-weight: 300;">https://www.instagram.com/tulumtemazcal/</a></strong></strong></p><p><strong><strong style="text-align: center; background-color: rgb(255, 255, 255);"><br></strong></strong></p>
+
+            <h2>Individual &amp; Private Options</h2>
+
+            <details class="service-item">
+                <summary>Private Temazcal Ceremony</summary><summary><br></summary><summary><br></summary>
+            </details>
+
+            <h2>Group Options</h2>
+
+            <details class="service-item">
+                <summary>Group Temazcal Ceremony</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 4–5 hours</span>
+                    <p>A traditional temazcal ceremony held in a small group setting. This extended format allows the process to unfold slowly and respectfully, including preparation, intention setting, ceremonial rounds with herbal steam, songs, silence, prayer, and a spacious grounding period afterward.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Temazcal for Retreats &amp; Special Groups</summary><summary><br></summary><summary><br></summary><summary><br></summary><summary><br></summary><summary><br></summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 4–5 hours</span>
+                    <p>Custom-designed ceremonies for retreats, wellness groups, and intentional communities, aligned with the purpose and rhythm of the group</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div id="psilocybin" class="page-section active">
+        <div class="hero" style="height: 40vh; background-image: url(&quot;vertical-closeup-shot-mushrooms-forest.jpg&quot;);">
+            <div class="hero-content"><h1>Psilocybin Ceremonies</h1><p>Therapeutic &amp; Ceremonial Process</p></div>
+        </div>
+
+        <div class="container">
+            <p style="text-align: center; margin-bottom: 3rem;">A carefully held therapeutic and ceremonial process, offered only after screening and preparation. This is not a single event, but a complete container focused on safety and integration.</p><h1>Psilocybin Therapeutic Ceremonies</h1><p><strong>A 2-Day Process of Healing, Insight &amp; Integration</strong></p><p>A carefully held therapeutic and ceremonial journey designed to support emotional healing, expanded awareness, and meaningful integration into daily life.</p><hr><h2>A Sacred &amp; Therapeutic Process</h2><p>Our psilocybin ceremonies are <strong>not recreational experiences</strong>. They are <strong>integral therapeutic processes</strong>, carefully designed to support emotional healing, nervous system regulation, and deep personal insight.</p><p>Each ceremony is <strong>private or held in very small groups</strong>, and is shaped around your personal history, emotional landscape, and present life moment. You do not need to “know where you are going.” Feeling the call is enough — the process unfolds step by step, with guidance, containment, and respect.</p><p>This work integrates:</p><ul>
+<li>
+<p>Modern psychotherapy and trauma-informed care</p>
+</li>
+<li>
+<p>Somatic and nervous system awareness</p>
+</li>
+<li>
+<p>Ancestral ceremonial wisdom</p>
+</li>
+<li>
+<p>Ethical preparation and long-term integration</p>
+</li>
+</ul><hr><h2>Why a Private or Small-Group Ceremony?</h2><p>This format allows for <strong>depth, safety, and personalization</strong>. Unlike large group settings, the attention is centered fully on you (or your chosen partner/group), allowing space to work with sensitive material and complex emotional processes.</p><p>This process is especially suitable for people who:</p><ul>
+<li>
+<p>Are navigating grief, crisis, anxiety, burnout, or trauma</p>
+</li>
+<li>
+<p>Are seeking clarity, purpose, or inner reconciliation</p>
+</li>
+<li>
+<p>Are approaching their first experience with entheogens</p>
+</li>
+<li>
+<p>Desire ongoing therapeutic support before and after</p>
+</li>
+<li>
+<p>Wish to share the process with a partner or close circle</p>
+</li>
+</ul><hr><h2>The Therapeutic Process — Step by Step</h2><h3>1. Clinical Assessment &amp; Screening</h3><p>Before any ceremony, a <strong>clinical interview and psychometric evaluation</strong> are conducted. This step ensures emotional and physical safety, explores personal history, and assesses readiness. In some cases, additional preparation or alternative support may be recommended.</p><hr><h3>2. Preparation &amp; Intention Setting</h3><p>Once approved, you participate in a <strong>personalized preparation session</strong> (online or in person). Together we clarify intention — not as a rigid goal, but as a symbolic compass. Guidance on diet, rest, emotional preparation, and energetic hygiene is provided.<br>
+The ceremony begins <strong>well before</strong> the medicine is taken.</p><hr><h3>3. Sacred Fire Opening Ceremony</h3><p>Upon arrival, the process begins with a <strong>traditional fire ceremony</strong>. This is the energetic and symbolic heart of the work — opening the space, invoking ancestral guidance, and preparing the nervous system to enter a receptive state.</p><hr><h3>4. Temazcal — Return to the Womb of the Earth <em>(optional but recommended)</em></h3><p>Before the medicine, a <strong>traditional temazcal</strong> is offered. This ceremonial steam bath supports physical purification, emotional release, and symbolic rebirth. Heat, song, silence, and herbs prepare the body and psyche for surrender and trust.</p><hr><h3>5. Psilocybin Ceremony (Teonanácatl)</h3><p>The central ceremony takes place at night in a <strong>carefully prepared ceremonial space</strong>, supported by music, silence, sacred instruments, and continuous therapeutic presence.</p><p>The medicine used is <strong>Teonanácatl</strong>, the sacred mushroom honored by Mesoamerican traditions. Doses are <strong>individualized</strong>, and guidance is present throughout. Experiences vary — emotional release, visions, memories, silence, insight — all are welcomed and supported.</p><p>The intention is not to control the experience, but to <strong>walk with it safely and consciously</strong>.</p><hr><h3>6. Morning Grounding &amp; Integration</h3><p>The following morning is dedicated to rest, reflection, and gentle integration. Practices may include grounding exercises, breathwork, writing, therapeutic dialogue, and soft movement — supporting the transition back into ordinary awareness.</p><hr><h3>7. Post-Ceremony Integration</h3><p>One to two weeks later, <strong>individual and/or group integration sessions</strong> are held. These sessions help translate insight into daily life, recognize patterns, and prevent dissociation or spiritual bypassing.<br>
+The medicine continues working through integration.</p><hr><h2>Ancestral &amp; Scientific Context</h2><p>Psilocybin has been used ceremonially for thousands of years by Indigenous Mesoamerican cultures, where it is known as <strong>Teonanácatl — “flesh of the gods.”</strong> These traditions preserved songs, prayers, and ceremonial frameworks that continue to guide respectful use today.</p><p>Modern neuroscience now confirms what ancestral knowledge long held. Research from institutions such as <strong>Johns Hopkins University, Imperial College London, and NYU</strong> demonstrates psilocybin’s therapeutic potential for:</p><ul>
+<li>
+<p>Treatment-resistant depression</p>
+</li>
+<li>
+<p>Anxiety and existential distress</p>
+</li>
+<li>
+<p>PTSD</p>
+</li>
+<li>
+<p>Addictions</p>
+</li>
+</ul><p>From a neurobiological perspective, psilocybin temporarily reduces activity in the brain’s Default Mode Network, allowing new neural pathways, emotional insight, and expanded perception to emerge.</p><p>Both science and tradition agree: <strong>set, setting, preparation, and integration are essential</strong>.</p><hr><h2>Duration &amp; Format</h2><p><strong>Total Process Duration:</strong><br>
+• <strong>2 full days</strong> (plus preparation &amp; integration sessions)</p><p><strong>Available Formats:</strong></p><ul>
+<li>
+<p>Individual (private)</p>
+</li>
+<li>
+<p>Couple</p>
+</li>
+<li>
+<p>Small group (intentional, limited size)</p>
+</li>
+</ul><hr><h2>Who This Work Is For</h2><p>This work is for those who feel called to deep inner exploration and are willing to engage responsibly with preparation and integration.</p><p>It is <strong>not suitable for everyone</strong>, and careful screening is part of ethical care.</p><hr><span style="font-size: 1rem;"><br></span></div><div class="container">This is not a shortcut.<p>
+It is not an escape.</p><p>It is a <strong>sacred, therapeutic journey</strong> — one that asks for honesty, presence, and care.</p><p>If you feel the call, we invite you to begin with a conversation.</p><p style="text-align: center; margin-bottom: 3rem;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Request a Consultation / Contact Us</strong></p><p style="font-size: medium;"><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">WA&nbsp;</span><strong style="text-align: center; background-color: rgb(255, 255, 255);">+52 5519 1219 00</strong></strong></p><p><strong></strong></p><p style="font-size: medium;"><strong><strong style="text-align: center; background-color: rgb(255, 255, 255);"><span style="font-weight: 300;">Instagram:&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/psic.arielamilstein/" style="font-weight: 300;">https://www.instagram.com/psic.arielamilstein/</a></strong></strong></p><div><strong><br></strong></div><p><strong><br></strong></p>
+
+            <details class="service-item" open="">
+                <summary>Individual (Private) Process</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 2 days / 1 night</span>
+                    <p><strong>Before:</strong> Clinical &amp; psychological screening, One-on-one preparation session, Intention setting &amp; nervous system resourcing.</p>
+                    <p><strong>Day 1 – Ceremony:</strong> Arrival and orientation, Opening ritual, Temazcal ceremony (when appropriate), Evening psilocybin ceremony with continuous therapeutic and ceremonial support, Nourishment, grounding, and rest.</p>
+                    <p><strong>Day 2 – Integration:</strong> Morning regulation and grounding practices, Individual therapeutic integration session, Closing ritual and transition support.</p>
+                </div>
+            </details>
+
+            <details class="service-item" open="">
+                <summary>Group Psilocybin Process</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 2 days / 1 night</span>
+                    <p>A carefully held, multi-day therapeutic and ceremonial process designed to support deep transformation with safety, preparation, and integration.</p>
+                    <p><strong>Day 1 – Preparation &amp; Ceremony:</strong> Clinical and psychological preparation, Intention setting and group orientation, Temazcal ceremony (when appropriate), Evening psilocybin ceremony held in a sacred, contained space.</p>
+                    <p><strong>Day 2 – Integration:</strong> Morning grounding and nervous system regulation, Group integration circle, Somatic practices, reflection, and meaning-making.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div id="hotels" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?q=80&amp;w=2670&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>Hotel &amp; Retreat Partnerships</h1><p>Curated Wellness Experiences</p></div>
+        </div>
+
+        <div class="container">
+            <p>We collaborate with boutique hotels, eco-resorts, and retreat centers to offer wellness experiences that go beyond conventional spa services. Our work brings together psychotherapy-informed care, somatic regulation, holistic wellness, and ancestral ceremonial practices.</p><p><strong>Curated Wellness Experiences for Conscious Hospitality</strong></p><p>We collaborate with <strong>boutique hotels, eco-resorts, and retreat centers</strong> to offer wellness experiences that go beyond conventional spa services — experiences that are grounded, meaningful, and responsibly held.</p><p>Our work integrates <strong>psychotherapy-informed care, somatic bodywork, lifestyle medicine, and ancestral ceremonial practices</strong>, creating offerings that support guests not only to relax, but to <strong>regulate, reconnect, and restore</strong>.</p><hr><h2>Our Approach to Hospitality Wellness</h2><p>Today’s travelers are seeking more than comfort. Many arrive carrying stress, transition, grief, burnout, or a desire for deeper reconnection. Our role is to support hotels and retreat centers in offering wellness experiences that feel <strong>authentic, safe, and genuinely nourishing</strong>.</p><p>We work with a <strong>trauma-informed and ethically grounded framework</strong>, ensuring that all experiences honor:</p><ul>
+<li>
+<p>Nervous system safety and pacing</p>
+</li>
+<li>
+<p>Cultural respect for ancestral practices</p>
+</li>
+<li>
+<p>Clear preparation and integration</p>
+</li>
+<li>
+<p>Professional care and discretion</p>
+</li>
+</ul><p>Our offerings are designed to integrate seamlessly into the guest experience while elevating the hotel or retreat’s wellness identity.</p><hr><h2>Wellness Experiences for Hotel &amp; Retreat Guests</h2><p>All offerings may be presented as:</p><ul>
+<li>
+<p>Individual guest experiences</p>
+</li>
+<li>
+<p>Signature hotel offerings</p>
+</li>
+<li>
+<p>Retreat components</p>
+</li>
+<li>
+<p>Seasonal or ongoing wellness menus</p>
+</li>
+</ul><hr><h3>Somatic Bodywork &amp; Nervous System Regulation</h3><p><strong>Duration:</strong> 60–90 minutes</p><p>Trauma-informed somatic bodywork and embodiment sessions supporting relaxation, emotional regulation, and recovery from travel stress, burnout, or overstimulation.</p><p>Ideal for:</p><ul>
+<li>
+<p>Jet lag and nervous system reset</p>
+</li>
+<li>
+<p>Chronic stress and tension</p>
+</li>
+<li>
+<p>Emotional fatigue</p>
+</li>
+</ul><hr><h3>Integrative Psychotherapy &amp; Emotional Support</h3><p><strong>Duration:</strong> 60–75 minutes</p><p>Confidential, one-on-one therapeutic sessions for guests navigating emotional overwhelm, life transitions, or personal processes during their stay.</p><p>Offered with discretion and professional care.</p><hr><h3>&nbsp;Lifestyle Medicine &amp; Nutrition Sessions</h3><p><strong>Duration:</strong> 60 minutes</p><p>Personalized guidance supporting energy, digestion, sleep, and sustainable wellness habits — allowing guests to take practical tools home with them.</p><hr><h2>Ceremonial &amp; Experiential Offerings</h2><h3>&nbsp;Tulum Temazcal Ceremonies</h3><p><strong>Duration:</strong> 4–5 hours</p><p>Traditional temazcal ceremonies held with deep respect for ancestral lineage and trauma-informed awareness. Offered as:</p><ul>
+<li>
+<p>Private guest experiences</p>
+</li>
+<li>
+<p>Small group ceremonies</p>
+</li>
+<li>
+<p>Retreat highlights</p>
+</li>
+</ul><p>Temazcal supports physical purification, emotional release, grounding, and embodied reconnection.</p><hr><h3>&nbsp;Cacao Ceremonies</h3><p><strong>Duration:</strong> 3–4 hours</p><p>Heart-opening ceremonial spaces supporting emotional awareness, connection, and intention setting. Ideal for retreat openings, closings, or meaningful group gatherings.</p><hr><h3>&nbsp;Integration Circles</h3><p><strong>Duration:</strong> 90–120 minutes</p><p>Facilitated spaces for reflection and integration following retreats, ceremonies, or profound experiences. These circles support grounding, meaning-making, and emotional regulation.</p><hr><h2>Psilocybin-Assisted Therapeutic Retreats</h2><p><strong>By Request · Carefully Curated</strong></p><p>For retreat centers aligned with ethical discernment and readiness, we offer <strong>fully curated psilocybin-assisted therapeutic retreats</strong>.</p><p>These are:</p><ul>
+<li>
+<p><strong>Not recreational</strong></p>
+</li>
+<li>
+<p>Held only within complete therapeutic containers</p>
+</li>
+<li>
+<p>Supported by preparation, ceremony, and integration</p>
+</li>
+</ul><p><strong>Format:</strong><br>
+• 2–3 day retreat structure<br>
+• Screening and assessment<br>
+• Preparation sessions<br>
+• Ceremony with therapeutic and somatic support<br>
+• Post-retreat integration</p><hr><h2>Integrated Retreat Design</h2><p><strong>Kinsey Williams · Ariela Milstein · Tulum Temazcal</strong></p><p>We specialize in <strong>co-designing retreats</strong> that integrate:</p><ul>
+<li>
+<p>Somatic bodywork and nervous system regulation</p>
+</li>
+<li>
+<p>Psychotherapy-informed group work</p>
+</li>
+<li>
+<p>Lifestyle medicine and nutrition education</p>
+</li>
+<li>
+<p>Temazcal and cacao ceremonies</p>
+</li>
+<li>
+<p>Spacious pacing, rest, and integration</p>
+</li>
+</ul><p>Each retreat is custom-designed in collaboration with the hosting venue, honoring the land, guest capacity, and retreat intention.</p><hr><h2>Why Hotels &amp; Retreat Centers Work With Us</h2><ul>
+<li>
+<p>Trauma-informed and ethically grounded facilitation</p>
+</li>
+<li>
+<p>Multidisciplinary professional background</p>
+</li>
+<li>
+<p>Experience with international and multicultural guests</p>
+</li>
+<li>
+<p>Multilingual offerings (English &amp; Spanish)</p>
+</li>
+<li>
+<p>Respectful integration of ancestral practices</p>
+</li>
+<li>
+<p>High-touch, low-ego presence</p>
+</li>
+</ul><hr><h2>Ideal Partners</h2><p>We partner best with:</p><ul>
+<li>
+<p>Boutique and eco-luxury hotels</p>
+</li>
+<li>
+<p>Retreat centers and sanctuaries</p>
+</li>
+<li>
+<p>Wellness-focused resorts</p>
+</li>
+<li>
+<p>Conscious travel experiences</p>
+</li>
+<li>
+<p>Venues prioritizing depth over volume</p>
+</li>
+</ul><hr><h2>How Partnerships Work</h2><p>Collaborations may include:</p><ul>
+<li>
+<p>Curated wellness menus</p>
+</li>
+<li>
+<p>On-call practitioners for retreats</p>
+</li>
+<li>
+<p>Signature ceremonial experiences</p>
+</li>
+<li>
+<p>Seasonal or long-term partnerships</p>
+</li>
+<li>
+<p>Private offerings for VIP guests</p>
+</li>
+</ul><p>All collaborations are <strong>proposal-based and custom-designed</strong>.</p><hr><h2>An Invitation</h2><p>We believe hospitality can be a gateway to healing — when held with integrity, care, and respect.</p><p>If your hotel or retreat center is seeking wellness offerings that are <strong>authentic, grounded, and transformative</strong>, we would be honored to explore a collaboration.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Request a Partnership Proposal / Contact Us</strong></p><p style="font-size: medium;"><strong><span style="text-align: center; background-color: rgb(255, 255, 255);">WA&nbsp;</span><strong style="text-align: center; background-color: rgb(255, 255, 255);">+52 5519 1219 00</strong></strong></p><p><strong></strong></p><p style="font-size: medium;"><strong><strong style="text-align: center; background-color: rgb(255, 255, 255);"><span style="font-weight: 300;">Instagram:&nbsp;</span><a rel="noopener" target="_new" class="decorated-link" href="https://www.instagram.com/psic.arielamilstein/" style="font-weight: 300;">https://www.instagram.com/psic.arielamilstein/</a></strong></strong></p>
+
+            <h2>Wellness Experiences for Guests</h2>
+            
+            <details class="service-item" open="">
+                <summary>Somatic Bodywork &amp; Nervous System Regulation</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–90 minutes</span>
+                    <p>Individual or small-group sessions supporting relaxation, emotional regulation, and recovery from travel stress, burnout, or overstimulation.</p>
+                </div>
+            </details>
+
+            <details class="service-item" open="">
+                <summary>Integrative Psychotherapy &amp; Emotional Support</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–75 minutes</span>
+                    <p>Private therapeutic sessions for guests navigating emotional overwhelm, life transitions, or the need for confidential, professional support during their stay.</p>
+                </div>
+            </details>
+
+            <details class="service-item" open="">
+                <summary>Lifestyle Medicine &amp; Nutrition Sessions</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60 minutes</span>
+                    <p>Personalized guidance supporting energy, digestion, sleep, and sustainable wellness habits—ideal for guests seeking practical takeaways beyond their stay.</p>
+                </div>
+            </details>
+
+            <h2>Ceremonial Offerings</h2>
+
+            <details class="service-item" open="">
+                <summary>Tulum Temazcal Ceremonies</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 4–5 hours</span>
+                    <p>Traditional temazcal ceremonies offered as private guest experiences or retreat highlights. Held with deep respect, careful pacing, and trauma-informed facilitation.</p>
+                </div>
+            </details>
+
+            <details class="service-item" open="">
+                <summary>Cacao Ceremonies</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 3–4 hours</span>
+                    <p>Heart-opening ceremonial spaces supporting emotional awareness, connection, and intention setting. Ideal for retreat openings, closings, or meaningful guest experiences.</p>
+                </div>
+            </details>
+
+            <div class="grid-card" style="margin-top: 3rem;">
+                <h3>Why Hotels &amp; Retreat Centers Work With Us</h3>
+                <ul>
+                    <li>Trauma-informed &amp; ethically grounded facilitation</li>
+                    <li>Multilingual offerings (English &amp; Spanish)</li>
+                    <li>Professional clinical and somatic backgrounds</li>
+                    <li>Experience with international and multicultural guests</li>
+                    <li>Respectful integration of ancestral practices</li>
+                    <li>High-touch, low-ego presence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="corporate" class="page-section">
+        <div class="hero" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&amp;w=2670&amp;auto=format&amp;fit=crop');">
+            <div class="hero-content"><h1>Corporate Wellness</h1><p>Embodied Wellbeing for Sustainable Performance</p></div>
+        </div>
+
+        <div class="container">
+            <p>Our corporate wellness work offers a different approach: sustainable wellbeing rooted in regulation, embodiment, and human-centered care.</p><p><strong>Embodied Wellbeing for Sustainable Performance</strong></p><p>Modern work environments demand constant attention, adaptability, and output. Over time, this pace takes a toll on the nervous system, emotional health, and relational capacity of individuals and teams.</p><p>Our corporate wellness work offers a different approach — one rooted in <strong>nervous system regulation, embodiment, and sustainable human performance</strong>, rather than productivity at any cost.</p><hr><h2>Our Approach to Corporate Wellness</h2><p>We understand burnout not as a lack of motivation, but as a <strong>physiological and emotional response to prolonged stress</strong>. When the nervous system remains in survival mode, focus, creativity, and collaboration naturally decline.</p><p>Our work focuses on restoring regulation first — allowing clarity, resilience, and effective leadership to emerge organically.</p><p>We integrate:</p><ul>
+<li>
+<p>Trauma-informed psychology</p>
+</li>
+<li>
+<p>Somatic and nervous system regulation</p>
+</li>
+<li>
+<p>Lifestyle medicine and nutrition</p>
+</li>
+<li>
+<p>Emotional intelligence and relational awareness</p>
+</li>
+<li>
+<p>Embodiment practices for sustainable performance</p>
+</li>
+</ul><p>All programs are <strong>experiential, practical, and evidence-informed</strong>, designed to meet real people in real work contexts.</p><h2>Why Wellbeing Directly Impacts Performance &amp; Revenue</h2>
+<p>Wellbeing is not a “soft benefit” — it is a <strong>core driver of organizational performance, retention, and financial sustainability</strong>.</p>
+<p>When the nervous system is chronically overstimulated, individuals may continue to function, but at a significant cost: reduced focus, impaired decision-making, emotional reactivity, absenteeism, disengagement, and high turnover. Over time, this erodes not only team morale, but also productivity and profitability.</p>
+<p><strong>Research consistently shows this connection:</strong></p>
+<ul>
+<li>
+<p>According to the <strong>World Health Organization (WHO)</strong>, depression and anxiety cost the global economy an estimated <strong>$1 trillion USD per year</strong> in lost productivity.</p>
+</li>
+<li>
+<p><strong>Gallup</strong> reports that employees experiencing burnout are <strong>63% more likely to take sick leave</strong> and <strong>2.6 times more likely to actively seek a different job</strong>, increasing turnover and recruitment costs.</p>
+</li>
+<li>
+<p>Studies referenced by <strong>Harvard Business Review</strong> show that chronic stress significantly impairs executive function, memory, emotional regulation, and decision-making — all critical for leadership and performance.</p>
+</li>
+<li>
+<p>Organizations that invest in employee wellbeing programs show, on average, <strong>higher engagement, improved retention, and better overall performance</strong>, with returns ranging from <strong>2:1 to 4:1</strong> when programs are well-designed and consistently implemented.</p>
+</li>
+</ul>
+<p>From a neurobiological perspective, <strong>regulated nervous systems</strong> support:</p>
+<ul>
+<li>
+<p>Clear thinking and strategic decision-making</p>
+</li>
+<li>
+<p>Emotional regulation under pressure</p>
+</li>
+<li>
+<p>Creativity and problem-solving</p>
+</li>
+<li>
+<p>Sustainable energy and focus</p>
+</li>
+</ul>
+<p>In contrast, dysregulated systems rely on urgency, fear, and overextension — strategies that may generate short-term output, but lead to long-term human and financial cost.</p>
+<p>Our corporate wellness programs are designed to support <strong>regulated performance</strong> — creating conditions where people can work effectively without burning out. This leads to healthier teams, stronger leadership, and organizations that are better equipped to grow, adapt, and remain profitable over time.</p>
+<p>Wellbeing, when approached correctly, is not a cost center.<br>
+It is a <strong>strategic investment in performance, stability, and long-term revenue</strong>.</p><h3><span style="color: rgb(44, 44, 44); font-family: Montserrat, sans-serif; font-size: 16px;">“Sustainable performance emerges from regulated nervous systems — not from pressure alone.”</span></h3><p>
+
+
+
+
+
+
+
+
+
+
+
+</p><blockquote>
+<p><br></p></blockquote><h2>Who This Is For</h2><p>Our corporate wellness work is especially supportive for:</p><ul>
+<li>
+<p>International and remote teams</p>
+</li>
+<li>
+<p>Leadership and executive groups</p>
+</li>
+<li>
+<p>High-responsibility roles</p>
+</li>
+<li>
+<p>Caregiving and service-based organizations</p>
+</li>
+<li>
+<p>Companies navigating growth or transition</p>
+</li>
+</ul><p>No prior experience with wellness or somatic practices is required.</p><hr><h2>Why Organizations Work With Us</h2><ul>
+<li>
+<p>Trauma-informed and ethically grounded approach</p>
+</li>
+<li>
+<p>Multidisciplinary expertise (psychotherapy, somatics, lifestyle medicine)</p>
+</li>
+<li>
+<p>Experience with international and multicultural teams</p>
+</li>
+<li>
+<p>Multilingual facilitation (English &amp; Spanish)</p>
+</li>
+<li>
+<p>Focus on sustainability, not short-term optimization</p>
+</li>
+</ul><hr><h2>How Programs Are Designed</h2><p>Each corporate collaboration begins with <strong>listening</strong>. We assess team needs, organizational context, and capacity before proposing a program.</p><p>Offerings may include:</p><ul>
+<li>
+<p>Single workshops</p>
+</li>
+<li>
+<p>Multi-session series</p>
+</li>
+<li>
+<p>Leadership intensives</p>
+</li>
+<li>
+<p>Retreat-based experiences</p>
+</li>
+<li>
+<p>Ongoing wellbeing partnerships</p>
+</li>
+</ul><p>All programs are <strong>proposal-based and tailored</strong> to each organization.</p><hr><br><p>We believe organizations thrive when people feel <strong>regulated, supported, and respected</strong> — not when they are pushed beyond capacity.</p><p>If your organization is seeking a wellness approach that is <strong>human, grounded, and effective</strong>, we invite you to start a conversation.</p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p><strong>→ Request a Corporate Wellness Proposal / Contact Us</strong></p><h2>Core Corporate Offerings</h2><p>
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p>Programs can be delivered <strong>in person or online</strong>, as standalone sessions or multi-session series.</p><details class="service-item">
+                <summary>Nervous System Regulation &amp; Burnout Prevention</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–120 minutes</span>
+                    <p>Practical, embodied sessions teaching teams how stress impacts the nervous system and how to restore regulation through simple, accessible practices.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Somatic &amp; Embodiment Sessions</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 60–90 minutes</span>
+                    <p>Movement, breathwork, and body-based practices designed to release tension, improve focus, and support emotional regulation—adapted for office or remote settings.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Emotional Intelligence &amp; Self-Regulation</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 90–120 minutes</span>
+                    <p>Workshops supporting emotional awareness, communication, boundaries, and relational resilience, grounded in psychology and somatic understanding.</p>
+                </div>
+            </details>
+
+            <details class="service-item">
+                <summary>Integration Spaces for Leadership &amp; Teams</summary>
+                <div class="service-content">
+                    <span class="duration-tag">Duration: 90 minutes</span>
+                    <p>Facilitated spaces for reflection, processing, and integration—especially valuable after periods of change, restructuring, or intensive projects.</p>
+                </div>
+            </details>
+
+            <div class="grid-card" style="margin-top: 3rem;">
+                <h3>Corporate Retreats &amp; Immersions</h3>
+                <span class="duration-tag">Duration: 1– 7 days</span>
+                <p>Immersive experiences designed to reset nervous systems, strengthen team cohesion, and support leadership clarity. Retreats may include somatic regulation practices, psychotherapy-informed group work, lifestyle medicine and nutrition education, and optional ceremonies.</p><p>Retreats may include:</p><ul>
+<li>
+<p>Somatic regulation and embodiment practices</p>
+</li>
+<li>
+<p>Psychotherapy-informed group work</p>
+</li>
+<li>
+<p>Lifestyle medicine and wellbeing education</p>
+</li>
+<li>
+<p>Temazcal and cacao ceremonies (optional, by alignment)</p>
+</li>
+<li>
+<p>Integration circles and intentional rest</p>
+</li>
+</ul><p>
+
+
+</p><p>All retreats are <strong>custom-designed</strong> to align with organizational culture, values, and readiness.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Logic
+        function goTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show target page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active state in nav (desktop)
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Highlight the button that matches the pageId
+            const activeBtns = Array.from(document.querySelectorAll('.nav-button')).filter(btn => btn.getAttribute('onclick').includes(pageId));
+            if(activeBtns.length > 0) activeBtns.forEach(btn => btn.classList.add('active'));
+
+            // Scroll to top
+            window.scrollTo(0,0);
+            
+            // Close mobile menu if open
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        // Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+              pageLanguage: 'en', 
+              includedLanguages: 'en,es', 
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
